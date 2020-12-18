@@ -15,27 +15,24 @@ public class Raktar {
         }
     }
 
-    //ide lehet kivetelt dobni, ha nincs is keszleten
-    public void keszletetCsokkent(Termek termek, Integer mennyiseg) {
+    public void keszletetCsokkent(Termek termek, Integer mennyiseg) throws RendelesException {
         if (raktaronVanEAKivantMennyiseg(termek, mennyiseg)) {
             keszlet.put(termek,keszlet.get(termek) - mennyiseg);
         } else {
-            //throw
-            String uzenet = "Nincs raktaron a kivant mennyiseg!";
+            throw new RendelesException("Nincs raktaron a kivant mennyiseg!");
         }
     }
 
     public boolean raktaronVan (Termek termek) {
         if (this.keszlet.containsKey(termek) && this.keszlet.get(termek) != null && this.keszlet.get(termek) > 0 ) {
-            boolean b = true;
-            return b;
+            return true;
         } else {
             return false;
         }
     }
 
     public boolean raktaronVanEAKivantMennyiseg (Termek termek, Integer mennyiseg) {
-        if (raktaronVan(termek) && this.keszlet.get(termek) >= mennyiseg ) {
+        if (raktaronVan(termek) && (this.keszlet.get(termek) >= mennyiseg) ) {
             return true;
         } else {
             return false;

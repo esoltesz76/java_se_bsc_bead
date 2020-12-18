@@ -8,7 +8,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class RaktarTest {
 
     @Test
-    public void keszletModositas() {
+    public void keszletModositas() throws RendelesException {
 
         Raktar raktar = new Raktar();
 
